@@ -68,27 +68,16 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
+# Special rule for the target install/local
+install/local/fast: install/local
 
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
+.PHONY : install/local/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -111,17 +100,6 @@ install/strip/fast: install/strip
 
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: install/local
-
-.PHONY : install/local/fast
-
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -133,16 +111,38 @@ test/fast: test
 
 .PHONY : test/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	cd /home/jonathanfascetti/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/jonathanfascetti/catkin_ws/build/CMakeFiles /home/jonathanfascetti/catkin_ws/build/imu_vn_100/CMakeFiles/progress.marks
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/all
+	cd /home/jonathanfascetti/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/jonathanfascetti/catkin_ws/build/CMakeFiles /home/jonathanfascetti/catkin_ws/build/autofocus/CMakeFiles/progress.marks
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/jonathanfascetti/catkin_ws/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/clean
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,12 +152,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/preinstall
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/preinstall
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
@@ -166,394 +166,229 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+autofocus/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+.PHONY : autofocus/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_nodejs: imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+std_msgs_generate_messages_lisp: autofocus/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 
-.PHONY : geometry_msgs_generate_messages_nodejs
+.PHONY : std_msgs_generate_messages_lisp
 
 # fast build rule for target.
-geometry_msgs_generate_messages_nodejs/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
-.PHONY : geometry_msgs_generate_messages_nodejs/fast
+std_msgs_generate_messages_lisp/fast:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f autofocus/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make autofocus/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+.PHONY : std_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
-imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+autofocus/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+.PHONY : autofocus/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_lisp: imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+std_msgs_generate_messages_eus: autofocus/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
 
-.PHONY : geometry_msgs_generate_messages_lisp
+.PHONY : std_msgs_generate_messages_eus
 
 # fast build rule for target.
-geometry_msgs_generate_messages_lisp/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
-.PHONY : geometry_msgs_generate_messages_lisp/fast
+std_msgs_generate_messages_eus/fast:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f autofocus/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make autofocus/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+.PHONY : std_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-imu_vn_100/CMakeFiles/imu_vn_100_node.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/imu_vn_100_node.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/imu_vn_100_node.dir/rule
+autofocus/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+.PHONY : autofocus/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-imu_vn_100_node: imu_vn_100/CMakeFiles/imu_vn_100_node.dir/rule
+std_msgs_generate_messages_nodejs: autofocus/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
 
-.PHONY : imu_vn_100_node
+.PHONY : std_msgs_generate_messages_nodejs
 
 # fast build rule for target.
-imu_vn_100_node/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100_node.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100_node.dir/build
-.PHONY : imu_vn_100_node/fast
+std_msgs_generate_messages_nodejs/fast:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f autofocus/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make autofocus/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+.PHONY : std_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
-imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+autofocus/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+.PHONY : autofocus/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_eus: imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+roscpp_generate_messages_lisp: autofocus/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
 
-.PHONY : geometry_msgs_generate_messages_eus
+.PHONY : roscpp_generate_messages_lisp
 
 # fast build rule for target.
-geometry_msgs_generate_messages_eus/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
-.PHONY : geometry_msgs_generate_messages_eus/fast
+roscpp_generate_messages_lisp/fast:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f autofocus/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make autofocus/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+.PHONY : roscpp_generate_messages_lisp/fast
 
 # Convenience name for target.
-imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+autofocus/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+.PHONY : autofocus/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_py: imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+roscpp_generate_messages_nodejs: autofocus/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
 
-.PHONY : geometry_msgs_generate_messages_py
+.PHONY : roscpp_generate_messages_nodejs
 
 # fast build rule for target.
-geometry_msgs_generate_messages_py/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
-.PHONY : geometry_msgs_generate_messages_py/fast
+roscpp_generate_messages_nodejs/fast:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f autofocus/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make autofocus/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
+.PHONY : roscpp_generate_messages_nodejs/fast
 
 # Convenience name for target.
-imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+autofocus/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+.PHONY : autofocus/CMakeFiles/roscpp_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_cpp: imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+roscpp_generate_messages_eus: autofocus/CMakeFiles/roscpp_generate_messages_eus.dir/rule
 
-.PHONY : sensor_msgs_generate_messages_cpp
+.PHONY : roscpp_generate_messages_eus
 
 # fast build rule for target.
-sensor_msgs_generate_messages_cpp/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
-.PHONY : sensor_msgs_generate_messages_cpp/fast
+roscpp_generate_messages_eus/fast:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f autofocus/CMakeFiles/roscpp_generate_messages_eus.dir/build.make autofocus/CMakeFiles/roscpp_generate_messages_eus.dir/build
+.PHONY : roscpp_generate_messages_eus/fast
 
 # Convenience name for target.
-imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_nodejs.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_nodejs.dir/rule
+autofocus/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+.PHONY : autofocus/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-diagnostic_msgs_generate_messages_nodejs: imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_nodejs.dir/rule
+std_msgs_generate_messages_cpp: autofocus/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : diagnostic_msgs_generate_messages_nodejs
+.PHONY : std_msgs_generate_messages_cpp
 
 # fast build rule for target.
-diagnostic_msgs_generate_messages_nodejs/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_nodejs.dir/build.make imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_nodejs.dir/build
-.PHONY : diagnostic_msgs_generate_messages_nodejs/fast
+std_msgs_generate_messages_cpp/fast:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f autofocus/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make autofocus/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+.PHONY : std_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
-imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+autofocus/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+.PHONY : autofocus/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_lisp: imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+roscpp_generate_messages_cpp: autofocus/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 
-.PHONY : sensor_msgs_generate_messages_lisp
+.PHONY : roscpp_generate_messages_cpp
 
 # fast build rule for target.
-sensor_msgs_generate_messages_lisp/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
-.PHONY : sensor_msgs_generate_messages_lisp/fast
+roscpp_generate_messages_cpp/fast:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f autofocus/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make autofocus/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+.PHONY : roscpp_generate_messages_cpp/fast
 
 # Convenience name for target.
-imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+autofocus/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+.PHONY : autofocus/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_py: imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+rosgraph_msgs_generate_messages_nodejs: autofocus/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 
-.PHONY : sensor_msgs_generate_messages_py
+.PHONY : rosgraph_msgs_generate_messages_nodejs
 
 # fast build rule for target.
-sensor_msgs_generate_messages_py/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
-.PHONY : sensor_msgs_generate_messages_py/fast
+rosgraph_msgs_generate_messages_nodejs/fast:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f autofocus/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make autofocus/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
+.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
-imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+autofocus/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+.PHONY : autofocus/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_cpp: imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+rosgraph_msgs_generate_messages_eus: autofocus/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
 
-.PHONY : geometry_msgs_generate_messages_cpp
+.PHONY : rosgraph_msgs_generate_messages_eus
 
 # fast build rule for target.
-geometry_msgs_generate_messages_cpp/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make imu_vn_100/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
-.PHONY : geometry_msgs_generate_messages_cpp/fast
+rosgraph_msgs_generate_messages_eus/fast:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f autofocus/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make autofocus/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+.PHONY : rosgraph_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+autofocus/CMakeFiles/roscpp_generate_messages_py.dir/rule:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/CMakeFiles/roscpp_generate_messages_py.dir/rule
+.PHONY : autofocus/CMakeFiles/roscpp_generate_messages_py.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_nodejs: imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+roscpp_generate_messages_py: autofocus/CMakeFiles/roscpp_generate_messages_py.dir/rule
 
-.PHONY : sensor_msgs_generate_messages_nodejs
+.PHONY : roscpp_generate_messages_py
 
 # fast build rule for target.
-sensor_msgs_generate_messages_nodejs/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
-.PHONY : sensor_msgs_generate_messages_nodejs/fast
+roscpp_generate_messages_py/fast:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f autofocus/CMakeFiles/roscpp_generate_messages_py.dir/build.make autofocus/CMakeFiles/roscpp_generate_messages_py.dir/build
+.PHONY : roscpp_generate_messages_py/fast
 
 # Convenience name for target.
-imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule
+autofocus/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+.PHONY : autofocus/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-diagnostic_msgs_generate_messages_cpp: imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule
+rosgraph_msgs_generate_messages_cpp: autofocus/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : diagnostic_msgs_generate_messages_cpp
+.PHONY : rosgraph_msgs_generate_messages_cpp
 
 # fast build rule for target.
-diagnostic_msgs_generate_messages_cpp/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/build.make imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/build
-.PHONY : diagnostic_msgs_generate_messages_cpp/fast
+rosgraph_msgs_generate_messages_cpp/fast:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f autofocus/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make autofocus/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
-imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/rule
+autofocus/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+.PHONY : autofocus/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-diagnostic_msgs_generate_messages_eus: imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/rule
+rosgraph_msgs_generate_messages_lisp: autofocus/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
 
-.PHONY : diagnostic_msgs_generate_messages_eus
+.PHONY : rosgraph_msgs_generate_messages_lisp
 
 # fast build rule for target.
-diagnostic_msgs_generate_messages_eus/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/build.make imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/build
-.PHONY : diagnostic_msgs_generate_messages_eus/fast
+rosgraph_msgs_generate_messages_lisp/fast:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f autofocus/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make autofocus/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
-imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+autofocus/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+.PHONY : autofocus/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_eus: imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+std_msgs_generate_messages_py: autofocus/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
-.PHONY : sensor_msgs_generate_messages_eus
+.PHONY : std_msgs_generate_messages_py
 
 # fast build rule for target.
-sensor_msgs_generate_messages_eus/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make imu_vn_100/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
-.PHONY : sensor_msgs_generate_messages_eus/fast
+std_msgs_generate_messages_py/fast:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f autofocus/CMakeFiles/std_msgs_generate_messages_py.dir/build.make autofocus/CMakeFiles/std_msgs_generate_messages_py.dir/build
+.PHONY : std_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/rule
+autofocus/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 autofocus/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+.PHONY : autofocus/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-diagnostic_msgs_generate_messages_lisp: imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/rule
+rosgraph_msgs_generate_messages_py: autofocus/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
 
-.PHONY : diagnostic_msgs_generate_messages_lisp
+.PHONY : rosgraph_msgs_generate_messages_py
 
 # fast build rule for target.
-diagnostic_msgs_generate_messages_lisp/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/build.make imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/build
-.PHONY : diagnostic_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-imu_vn_100/CMakeFiles/imu_vn_100.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/imu_vn_100.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/imu_vn_100.dir/rule
-
-# Convenience name for target.
-imu_vn_100: imu_vn_100/CMakeFiles/imu_vn_100.dir/rule
-
-.PHONY : imu_vn_100
-
-# fast build rule for target.
-imu_vn_100/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100.dir/build
-.PHONY : imu_vn_100/fast
-
-# Convenience name for target.
-imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_py.dir/rule:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_py.dir/rule
-.PHONY : imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-diagnostic_msgs_generate_messages_py: imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_py.dir/rule
-
-.PHONY : diagnostic_msgs_generate_messages_py
-
-# fast build rule for target.
-diagnostic_msgs_generate_messages_py/fast:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_py.dir/build.make imu_vn_100/CMakeFiles/diagnostic_msgs_generate_messages_py.dir/build
-.PHONY : diagnostic_msgs_generate_messages_py/fast
-
-src/imu_vn_100.o: src/imu_vn_100.cpp.o
-
-.PHONY : src/imu_vn_100.o
-
-# target to build an object file
-src/imu_vn_100.cpp.o:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100.dir/src/imu_vn_100.cpp.o
-.PHONY : src/imu_vn_100.cpp.o
-
-src/imu_vn_100.i: src/imu_vn_100.cpp.i
-
-.PHONY : src/imu_vn_100.i
-
-# target to preprocess a source file
-src/imu_vn_100.cpp.i:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100.dir/src/imu_vn_100.cpp.i
-.PHONY : src/imu_vn_100.cpp.i
-
-src/imu_vn_100.s: src/imu_vn_100.cpp.s
-
-.PHONY : src/imu_vn_100.s
-
-# target to generate assembly for a file
-src/imu_vn_100.cpp.s:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100.dir/src/imu_vn_100.cpp.s
-.PHONY : src/imu_vn_100.cpp.s
-
-src/imu_vn_100_node.o: src/imu_vn_100_node.cpp.o
-
-.PHONY : src/imu_vn_100_node.o
-
-# target to build an object file
-src/imu_vn_100_node.cpp.o:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100_node.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100_node.dir/src/imu_vn_100_node.cpp.o
-.PHONY : src/imu_vn_100_node.cpp.o
-
-src/imu_vn_100_node.i: src/imu_vn_100_node.cpp.i
-
-.PHONY : src/imu_vn_100_node.i
-
-# target to preprocess a source file
-src/imu_vn_100_node.cpp.i:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100_node.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100_node.dir/src/imu_vn_100_node.cpp.i
-.PHONY : src/imu_vn_100_node.cpp.i
-
-src/imu_vn_100_node.s: src/imu_vn_100_node.cpp.s
-
-.PHONY : src/imu_vn_100_node.s
-
-# target to generate assembly for a file
-src/imu_vn_100_node.cpp.s:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100_node.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100_node.dir/src/imu_vn_100_node.cpp.s
-.PHONY : src/imu_vn_100_node.cpp.s
-
-vncpplib/src/arch/linux/vncp_services.o: vncpplib/src/arch/linux/vncp_services.c.o
-
-.PHONY : vncpplib/src/arch/linux/vncp_services.o
-
-# target to build an object file
-vncpplib/src/arch/linux/vncp_services.c.o:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100.dir/vncpplib/src/arch/linux/vncp_services.c.o
-.PHONY : vncpplib/src/arch/linux/vncp_services.c.o
-
-vncpplib/src/arch/linux/vncp_services.i: vncpplib/src/arch/linux/vncp_services.c.i
-
-.PHONY : vncpplib/src/arch/linux/vncp_services.i
-
-# target to preprocess a source file
-vncpplib/src/arch/linux/vncp_services.c.i:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100.dir/vncpplib/src/arch/linux/vncp_services.c.i
-.PHONY : vncpplib/src/arch/linux/vncp_services.c.i
-
-vncpplib/src/arch/linux/vncp_services.s: vncpplib/src/arch/linux/vncp_services.c.s
-
-.PHONY : vncpplib/src/arch/linux/vncp_services.s
-
-# target to generate assembly for a file
-vncpplib/src/arch/linux/vncp_services.c.s:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100.dir/vncpplib/src/arch/linux/vncp_services.c.s
-.PHONY : vncpplib/src/arch/linux/vncp_services.c.s
-
-vncpplib/src/vn100.o: vncpplib/src/vn100.c.o
-
-.PHONY : vncpplib/src/vn100.o
-
-# target to build an object file
-vncpplib/src/vn100.c.o:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100.dir/vncpplib/src/vn100.c.o
-.PHONY : vncpplib/src/vn100.c.o
-
-vncpplib/src/vn100.i: vncpplib/src/vn100.c.i
-
-.PHONY : vncpplib/src/vn100.i
-
-# target to preprocess a source file
-vncpplib/src/vn100.c.i:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100.dir/vncpplib/src/vn100.c.i
-.PHONY : vncpplib/src/vn100.c.i
-
-vncpplib/src/vn100.s: vncpplib/src/vn100.c.s
-
-.PHONY : vncpplib/src/vn100.s
-
-# target to generate assembly for a file
-vncpplib/src/vn100.c.s:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100.dir/vncpplib/src/vn100.c.s
-.PHONY : vncpplib/src/vn100.c.s
-
-vncpplib/src/vndevice.o: vncpplib/src/vndevice.c.o
-
-.PHONY : vncpplib/src/vndevice.o
-
-# target to build an object file
-vncpplib/src/vndevice.c.o:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100.dir/vncpplib/src/vndevice.c.o
-.PHONY : vncpplib/src/vndevice.c.o
-
-vncpplib/src/vndevice.i: vncpplib/src/vndevice.c.i
-
-.PHONY : vncpplib/src/vndevice.i
-
-# target to preprocess a source file
-vncpplib/src/vndevice.c.i:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100.dir/vncpplib/src/vndevice.c.i
-.PHONY : vncpplib/src/vndevice.c.i
-
-vncpplib/src/vndevice.s: vncpplib/src/vndevice.c.s
-
-.PHONY : vncpplib/src/vndevice.s
-
-# target to generate assembly for a file
-vncpplib/src/vndevice.c.s:
-	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f imu_vn_100/CMakeFiles/imu_vn_100.dir/build.make imu_vn_100/CMakeFiles/imu_vn_100.dir/vncpplib/src/vndevice.c.s
-.PHONY : vncpplib/src/vndevice.c.s
+rosgraph_msgs_generate_messages_py/fast:
+	cd /home/jonathanfascetti/catkin_ws/build && $(MAKE) -f autofocus/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make autofocus/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
+.PHONY : rosgraph_msgs_generate_messages_py/fast
 
 # Help Target
 help:
@@ -562,44 +397,27 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install"
-	@echo "... geometry_msgs_generate_messages_nodejs"
-	@echo "... geometry_msgs_generate_messages_lisp"
-	@echo "... imu_vn_100_node"
-	@echo "... rebuild_cache"
-	@echo "... geometry_msgs_generate_messages_eus"
-	@echo "... geometry_msgs_generate_messages_py"
-	@echo "... sensor_msgs_generate_messages_cpp"
-	@echo "... diagnostic_msgs_generate_messages_nodejs"
-	@echo "... sensor_msgs_generate_messages_lisp"
-	@echo "... sensor_msgs_generate_messages_py"
-	@echo "... geometry_msgs_generate_messages_cpp"
-	@echo "... sensor_msgs_generate_messages_nodejs"
-	@echo "... edit_cache"
-	@echo "... diagnostic_msgs_generate_messages_cpp"
-	@echo "... diagnostic_msgs_generate_messages_eus"
-	@echo "... list_install_components"
-	@echo "... sensor_msgs_generate_messages_eus"
-	@echo "... diagnostic_msgs_generate_messages_lisp"
-	@echo "... install/strip"
-	@echo "... imu_vn_100"
 	@echo "... install/local"
-	@echo "... diagnostic_msgs_generate_messages_py"
+	@echo "... list_install_components"
+	@echo "... install/strip"
+	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... std_msgs_generate_messages_eus"
+	@echo "... std_msgs_generate_messages_nodejs"
+	@echo "... roscpp_generate_messages_lisp"
 	@echo "... test"
-	@echo "... src/imu_vn_100.o"
-	@echo "... src/imu_vn_100.i"
-	@echo "... src/imu_vn_100.s"
-	@echo "... src/imu_vn_100_node.o"
-	@echo "... src/imu_vn_100_node.i"
-	@echo "... src/imu_vn_100_node.s"
-	@echo "... vncpplib/src/arch/linux/vncp_services.o"
-	@echo "... vncpplib/src/arch/linux/vncp_services.i"
-	@echo "... vncpplib/src/arch/linux/vncp_services.s"
-	@echo "... vncpplib/src/vn100.o"
-	@echo "... vncpplib/src/vn100.i"
-	@echo "... vncpplib/src/vn100.s"
-	@echo "... vncpplib/src/vndevice.o"
-	@echo "... vncpplib/src/vndevice.i"
-	@echo "... vncpplib/src/vndevice.s"
+	@echo "... roscpp_generate_messages_nodejs"
+	@echo "... roscpp_generate_messages_eus"
+	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... roscpp_generate_messages_cpp"
+	@echo "... rebuild_cache"
+	@echo "... rosgraph_msgs_generate_messages_nodejs"
+	@echo "... edit_cache"
+	@echo "... rosgraph_msgs_generate_messages_eus"
+	@echo "... roscpp_generate_messages_py"
+	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... rosgraph_msgs_generate_messages_lisp"
+	@echo "... std_msgs_generate_messages_py"
+	@echo "... rosgraph_msgs_generate_messages_py"
 .PHONY : help
 
 
