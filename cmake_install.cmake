@@ -1,4 +1,4 @@
-# Install script for directory: /home/jonathanfascetti/catkin_ws/src/autofocus
+# Install script for directory: /home/jonathanfascetti/catkin_ws/src/beginner_tutorials
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -33,17 +33,17 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/jonathanfascetti/catkin_ws/build/autofocus/catkin_generated/installspace/autofocus.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/jonathanfascetti/catkin_ws/build/beginner_tutorials/catkin_generated/installspace/beginner_tutorials.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autofocus/cmake" TYPE FILE FILES
-    "/home/jonathanfascetti/catkin_ws/build/autofocus/catkin_generated/installspace/autofocusConfig.cmake"
-    "/home/jonathanfascetti/catkin_ws/build/autofocus/catkin_generated/installspace/autofocusConfig-version.cmake"
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/beginner_tutorials/cmake" TYPE FILE FILES
+    "/home/jonathanfascetti/catkin_ws/build/beginner_tutorials/catkin_generated/installspace/beginner_tutorialsConfig.cmake"
+    "/home/jonathanfascetti/catkin_ws/build/beginner_tutorials/catkin_generated/installspace/beginner_tutorialsConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autofocus" TYPE FILE FILES "/home/jonathanfascetti/catkin_ws/src/autofocus/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/beginner_tutorials" TYPE FILE FILES "/home/jonathanfascetti/catkin_ws/src/beginner_tutorials/package.xml")
 endif()
 
