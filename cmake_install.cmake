@@ -1,4 +1,4 @@
-# Install script for directory: /home/jonathanfascetti/catkin_ws/src
+# Install script for directory: /home/jonathanfascetti/catkin_ws/src/imu_vn_100
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -33,105 +33,76 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  
-      if (NOT EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}")
-        file(MAKE_DIRECTORY "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}")
-      endif()
-      if (NOT EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/.catkin")
-        file(WRITE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/.catkin" "")
-      endif()
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/jonathanfascetti/catkin_ws/build/imu_vn_100/catkin_generated/installspace/imu_vn_100.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/jonathanfascetti/catkin_ws/install/_setup_util.py")
-  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
-    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
-  endif()
-  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
-    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
-  endif()
-file(INSTALL DESTINATION "/home/jonathanfascetti/catkin_ws/install" TYPE PROGRAM FILES "/home/jonathanfascetti/catkin_ws/build/catkin_generated/installspace/_setup_util.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/imu_vn_100/cmake" TYPE FILE FILES
+    "/home/jonathanfascetti/catkin_ws/build/imu_vn_100/catkin_generated/installspace/imu_vn_100Config.cmake"
+    "/home/jonathanfascetti/catkin_ws/build/imu_vn_100/catkin_generated/installspace/imu_vn_100Config-version.cmake"
+    )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/jonathanfascetti/catkin_ws/install/env.sh")
-  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
-    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
-  endif()
-  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
-    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
-  endif()
-file(INSTALL DESTINATION "/home/jonathanfascetti/catkin_ws/install" TYPE PROGRAM FILES "/home/jonathanfascetti/catkin_ws/build/catkin_generated/installspace/env.sh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/imu_vn_100" TYPE FILE FILES "/home/jonathanfascetti/catkin_ws/src/imu_vn_100/package.xml")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/jonathanfascetti/catkin_ws/install/setup.bash")
-  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
-    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libimu_vn_100.so" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libimu_vn_100.so")
+    file(RPATH_CHECK
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libimu_vn_100.so"
+         RPATH "")
   endif()
-  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
-    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/jonathanfascetti/catkin_ws/devel/lib/libimu_vn_100.so")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libimu_vn_100.so" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libimu_vn_100.so")
+    file(RPATH_CHANGE
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libimu_vn_100.so"
+         OLD_RPATH "/opt/ros/kinetic/lib:"
+         NEW_RPATH "")
+    if(CMAKE_INSTALL_DO_STRIP)
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libimu_vn_100.so")
+    endif()
   endif()
-file(INSTALL DESTINATION "/home/jonathanfascetti/catkin_ws/install" TYPE FILE FILES "/home/jonathanfascetti/catkin_ws/build/catkin_generated/installspace/setup.bash")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/jonathanfascetti/catkin_ws/install/setup.sh")
-  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
-    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/imu_vn_100/imu_vn_100_node" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/imu_vn_100/imu_vn_100_node")
+    file(RPATH_CHECK
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/imu_vn_100/imu_vn_100_node"
+         RPATH "")
   endif()
-  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
-    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/imu_vn_100" TYPE EXECUTABLE FILES "/home/jonathanfascetti/catkin_ws/devel/lib/imu_vn_100/imu_vn_100_node")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/imu_vn_100/imu_vn_100_node" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/imu_vn_100/imu_vn_100_node")
+    file(RPATH_CHANGE
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/imu_vn_100/imu_vn_100_node"
+         OLD_RPATH "/opt/ros/kinetic/lib:/home/jonathanfascetti/catkin_ws/devel/lib:"
+         NEW_RPATH "")
+    if(CMAKE_INSTALL_DO_STRIP)
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/imu_vn_100/imu_vn_100_node")
+    endif()
   endif()
-file(INSTALL DESTINATION "/home/jonathanfascetti/catkin_ws/install" TYPE FILE FILES "/home/jonathanfascetti/catkin_ws/build/catkin_generated/installspace/setup.sh")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/jonathanfascetti/catkin_ws/install/setup.zsh")
-  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
-    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
-  endif()
-  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
-    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
-  endif()
-file(INSTALL DESTINATION "/home/jonathanfascetti/catkin_ws/install" TYPE FILE FILES "/home/jonathanfascetti/catkin_ws/build/catkin_generated/installspace/setup.zsh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/imu_vn_100" TYPE DIRECTORY FILES "/home/jonathanfascetti/catkin_ws/src/imu_vn_100/include/imu_vn_100/" FILES_MATCHING REGEX "/[^/]*\\.h[^/]*[^/]*$")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/jonathanfascetti/catkin_ws/install/.rosinstall")
-  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
-    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
-  endif()
-  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
-    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
-  endif()
-file(INSTALL DESTINATION "/home/jonathanfascetti/catkin_ws/install" TYPE FILE FILES "/home/jonathanfascetti/catkin_ws/build/catkin_generated/installspace/.rosinstall")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/imu_vn_100" TYPE FILE FILES
+    "/home/jonathanfascetti/catkin_ws/src/imu_vn_100/vncpplib/include/vn100.h"
+    "/home/jonathanfascetti/catkin_ws/src/imu_vn_100/vncpplib/include/vncp_services.h"
+    "/home/jonathanfascetti/catkin_ws/src/imu_vn_100/vncpplib/include/vndevice.h"
+    "/home/jonathanfascetti/catkin_ws/src/imu_vn_100/vncpplib/include/vn_errorCodes.h"
+    "/home/jonathanfascetti/catkin_ws/src/imu_vn_100/vncpplib/include/vn_kinematics.h"
+    "/home/jonathanfascetti/catkin_ws/src/imu_vn_100/vncpplib/include/vn_linearAlgebra.h"
+    )
 endif()
 
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for each subdirectory.
-  include("/home/jonathanfascetti/catkin_ws/build/gtest/cmake_install.cmake")
-  include("/home/jonathanfascetti/catkin_ws/build/autofocus/cmake_install.cmake")
-  include("/home/jonathanfascetti/catkin_ws/build/beginner_tutorials/cmake_install.cmake")
-  include("/home/jonathanfascetti/catkin_ws/build/jon_pack/cmake_install.cmake")
-  include("/home/jonathanfascetti/catkin_ws/build/imu_vn_100/cmake_install.cmake")
-  include("/home/jonathanfascetti/catkin_ws/build/usb_cam/cmake_install.cmake")
-
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/imu_vn_100" TYPE DIRECTORY FILES "/home/jonathanfascetti/catkin_ws/src/imu_vn_100/launch")
 endif()
 
-if(CMAKE_INSTALL_COMPONENT)
-  set(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
-else()
-  set(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
-endif()
-
-string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
-       "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/jonathanfascetti/catkin_ws/build/${CMAKE_INSTALL_MANIFEST}"
-     "${CMAKE_INSTALL_MANIFEST_CONTENT}")
