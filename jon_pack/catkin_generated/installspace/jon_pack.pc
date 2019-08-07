@@ -1,0 +1,8 @@
+prefix=/home/jonathanfascetti/catkin_ws/install
+
+Name: jon_pack
+Description: Description of jon_pack
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/jonathanfascetti/catkin_ws/install/lib 
+Requires: 

@@ -1,0 +1,2 @@
+autofocus:beginner_tutorials:imu_vn_100:jon_pack:usb_cam
+-DCATKIN_DEVEL_PREFIX=/home/jonathanfascetti/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/jonathanfascetti/catkin_ws/install -G Unix Makefiles
